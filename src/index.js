@@ -254,14 +254,16 @@ export default class AttachesTool {
     const body = response.body;
 
     if (body.success && body.file) {
-      const { url, name, size } = body.file;
+      // const { url, name, size } = body.file;
+      const { url, name, fileID } = body.file;
 
       this.data = {
         file: {
           url,
           extension: name.split('.').pop(),
           name,
-          size
+          // size,
+          fileID
         },
         title: name
       };
@@ -384,7 +386,8 @@ export default class AttachesTool {
         url: (file && file.url) || this._data.file.url,
         name: (file && file.name) || this._data.file.name,
         extension: (file && file.extension) || this._data.file.extension,
-        size: (file && file.size) || this._data.file.size
+        // size: (file && file.size) || this._data.file.size
+        fileID: (file && file.fileID) || this._data.file.fileID
       },
       title: title || this._data.title
     });
